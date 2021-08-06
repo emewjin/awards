@@ -22,11 +22,11 @@ export default function Card({ data: { title, img, author, category } }) {
 const Container = styled.div`
   position: relative;
   display: flex;
-  padding: 20px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 30%;
+  padding: 20px;
   border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: rgba(243, 166, 131, 0.16) 0px 3px 6px,
@@ -36,6 +36,12 @@ const Container = styled.div`
     box-shadow: rgba(241, 144, 102, 0.16) 0px 10px 36px 0px,
       rgba(241, 144, 102, 0.06) 0px 0px 0px 1px;
   }
+  ${({ theme }) => theme.big`
+    width:40%;
+  `};
+  ${({ theme }) => theme.tablet`
+    width:100%;
+  `};
 `;
 
 const Category = styled.div`
@@ -80,5 +86,5 @@ const Author = styled.p`
 `;
 
 const Img = styled.img`
-  width: 100%;
+  /* width: 100%; */
 `;

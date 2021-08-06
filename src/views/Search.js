@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import Section from "./Section";
+import Section from "../components/Section";
 
 export default function Search() {
   const [datas, setDatas] = useState([]);

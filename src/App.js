@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
-import Hair from "./components/Hair";
-import Eye from "./components/Eye";
-import Cloth from "./components/Cloth";
-import Pet from "./components/Pet";
-import Info from "./components/Info";
-import Search from "./components/Search";
+import Hair from "./views/Hair";
+import Eye from "./views/Eye";
+import Cloth from "./views/Cloth";
+import Pet from "./views/Pet";
+import Info from "./views/Info";
+import Search from "./views/Search";
 
 function App() {
   return (

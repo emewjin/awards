@@ -34,6 +34,10 @@ export default function Search() {
     setSearchedData([...result]);
   };
 
+  const onEnter = (e) => {
+    if (e.keyCode === 13) searchItem();
+  };
+
   return (
     <Container>
       <SearchContainer>
@@ -41,6 +45,7 @@ export default function Search() {
           type="text"
           placeholder="작품명 또는 출품자 이름을 검색할 수 있어요"
           onInput={handleInput}
+          onKeyDown={onEnter}
         />
         <SearchIcon className="fas fa-search" onClick={searchItem} />
       </SearchContainer>

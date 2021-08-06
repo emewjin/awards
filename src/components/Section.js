@@ -20,7 +20,10 @@ export default function Section({ datas, loading }) {
 
   const saveItem = (e) => {
     const id = e.target.dataset.id;
-    if (!wishIds.includes(id)) setWishIds((prev) => [...prev, id]);
+    if (!wishIds.includes(id)) {
+      setWishIds((prev) => [...prev, id]);
+      alert("찜 성공!");
+    }
     if (wishIds.includes(id)) alert("이미 찜한 항목이예요");
   };
 

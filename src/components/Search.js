@@ -31,7 +31,6 @@ export default function Search() {
         data.title.includes(searchTerm) || data.author.includes(searchTerm)
       );
     });
-    console.log(result);
     setSearchedData([...result]);
   };
 

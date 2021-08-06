@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export default function Section({ datas }) {
   const goTop = () => {

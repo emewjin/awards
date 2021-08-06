@@ -1,7 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export default function Card({ data: { title, img, author, category } }) {
   const { pathname } = useLocation();
@@ -27,6 +26,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: rgba(243, 166, 131, 0.16) 0px 3px 6px,
@@ -68,11 +68,17 @@ const Title = styled.p`
   color: rgba(241, 144, 102, 1);
   font-weight: bold;
   font-size: 20px;
+  line-height: 1.4;
+  text-align: center;
+  word-break: keep-all;
 `;
 
 const Author = styled.p`
   margin: 10px 0;
   color: rgba(241, 144, 102, 1);
+  font-size: 16px;
 `;
 
-const Img = styled.img``;
+const Img = styled.img`
+  width: 100%;
+`;

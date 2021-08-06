@@ -8,6 +8,7 @@ export default function Section({ datas, loading }) {
 
   useEffect(() => {
     const localWishes = JSON.parse(localStorage.getItem("id"));
+    if (!localWishes) return;
     if (localWishes.length) setWishIds([...localWishes]);
     if (!localWishes.length) setWishIds([]);
     // eslint-disable-next-line react-hooks/exhaustive-deps

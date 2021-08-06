@@ -7,14 +7,21 @@ import styled from "styled-components";
 export default function Wish() {
   const { wishIds, setWishIds } = useWishIdContext();
   const [datas, setDatas] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [wishItems, setWishItems] = useState([]);
 
   const getData = async () => {
-    const { data: hair } = await axios.get(`/datas/hair.json`);
-    const { data: pet } = await axios.get(`/datas/pet.json`);
-    const { data: eye } = await axios.get(`/datas/eye.json`);
-    const { data: cloth } = await axios.get(`/datas/cloth.json`);
-    setDatas([...hair, ...pet, ...eye, ...cloth]);
+    try {
+      const { data: hair } = await axios.get(`/datas/hair.json`);
+      const { data: pet } = await axios.get(`/datas/pet.json`);
+      const { data: eye } = await axios.get(`/datas/eye.json`);
+      const { data: cloth } = await axios.get(`/datas/cloth.json`);
+      setDatas([...hair, ...pet, ...eye, ...cloth]);
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -44,7 +51,8 @@ export default function Wish() {
         관심있는 작품을 찜해두고 매일 투표할 때 보고 투표하세요!
       </Desription>
       <Delete onClick={deleteAll}>전체 삭제</Delete>
-      {wishItems.length === 0 ? (
+      {loading && <Notice>로딩 중...</Notice>}
+      {!loading && wishItems.length === 0 ? (
         <Notice>찜한 작품이 없어요</Notice>
       ) : (
         <Section

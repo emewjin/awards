@@ -26,6 +26,7 @@ export default function Hair() {
   useEffect(() => {
     getData("hair");
     observer.observe(observerRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleIntersection = (entries) => {

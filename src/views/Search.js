@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styled from "styled-components";
 import Section from "../components/Section";
+import styled from "styled-components/macro";
 
 export default function Search() {
   const [datas, setDatas] = useState([]);
+  const [isBlured, setIsBlured] = useState(false);
   const [searchedData, setSearchedData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const getData = async (item) => {
+  const getData = async () => {
     const { data: hair } = await axios.get(`/datas/hair.json`);
     const { data: pet } = await axios.get(`/datas/pet.json`);
     const { data: eye } = await axios.get(`/datas/eye.json`);
@@ -38,6 +39,10 @@ export default function Search() {
     if (e.keyCode === 13) searchItem();
   };
 
+  const onBlurInput = () => {
+    setIsBlured(true);
+  };
+
   return (
     <Container>
       <SearchContainer>
@@ -46,10 +51,14 @@ export default function Search() {
           placeholder="작품명 또는 출품자 이름을 검색할 수 있어요"
           onInput={handleInput}
           onKeyDown={onEnter}
+          onBlur={onBlurInput}
         />
         <SearchIcon className="fas fa-search" onClick={searchItem} />
       </SearchContainer>
-      <Section datas={searchedData} />
+      {isBlured && searchedData.length === 0 && (
+        <Notice>검색 결과가 없어요. 검색어를 확인해주세요</Notice>
+      )}
+      {searchedData.length !== 0 && <Section datas={searchedData} />}
     </Container>
   );
 }
@@ -98,4 +107,8 @@ const SearchIcon = styled.i`
     font-size: 20px;
     top:33%;
   `};
+`;
+
+const Notice = styled.p`
+  margin-top: 100px;
 `;

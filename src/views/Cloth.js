@@ -6,6 +6,7 @@ import styled from "styled-components";
 export default function Hair() {
   const observerRef = useRef(null);
   const [clothes, setClothes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getData = async (item) => {
     try {
@@ -20,6 +21,8 @@ export default function Hair() {
       ]);
     } catch (error) {
       alert(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -41,7 +44,7 @@ export default function Hair() {
 
   return (
     <>
-      <Section datas={clothes} />
+      <Section datas={clothes} loading={loading} />
       <Observer ref={observerRef} />
     </>
   );

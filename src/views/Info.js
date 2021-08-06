@@ -27,6 +27,9 @@ const Container = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
+  padding-top: 100px;
+  line-height: 1.4;
 `;
 
 const Title = styled.h1`
@@ -34,6 +37,8 @@ const Title = styled.h1`
   font-size: 40px;
   font-weight: bold;
   color: rgba(241, 144, 102, 1);
+  text-align: center;
+  word-break: keep-all;
 `;
 
 const Lists = styled.ul`
@@ -46,4 +51,6 @@ const Lists = styled.ul`
 const List = styled.li`
   margin: 10px 0;
   font-size: 20px;
+  color: rgba(0, 0, 0, 0.7);
+  text-align: center;
 `;

@@ -28,7 +28,7 @@ const Container = styled.main`
   gap: 20px;
   justify-content: center;
   padding: 10px;
-  padding-top: 30px;
+  padding-top: 100px;
 `;
 
 const Up = styled.button`

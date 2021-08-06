@@ -59,7 +59,7 @@ const Container = styled.main`
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  padding-top: 30px;
+  padding-top: 100px;
 `;
 
 const SearchContainer = styled.div`

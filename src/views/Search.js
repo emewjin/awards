@@ -63,8 +63,8 @@ const Container = styled.main`
 `;
 
 const SearchContainer = styled.div`
-  width: 70%;
   position: relative;
+  width: 70%;
   ${({ theme }) => theme.tablet`
     width: 90%;
   `};
@@ -81,7 +81,7 @@ const SearchInput = styled.input`
   font-size: 20px;
 
   ${({ theme }) => theme.tablet`
-  font-size: 15px;
+    font-size: 15px;
     padding: 15px 20px;
     padding-right:50px;
   `};

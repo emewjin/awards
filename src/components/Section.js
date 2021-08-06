@@ -24,11 +24,11 @@ export default function Section({ datas }) {
 
 const Container = styled.main`
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
   padding: 10px;
   padding-top: 100px;
+  flex-wrap: wrap;
+  gap: 20px;
 `;
 
 const Up = styled.button`

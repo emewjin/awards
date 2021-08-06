@@ -25,20 +25,23 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 30%;
   padding: 20px;
+  width: 30%;
   border: 1px solid transparent;
   border-radius: 5px;
   box-shadow: rgba(243, 166, 131, 0.16) 0px 3px 6px,
     rgba(243, 166, 131, 0.23) 0px 3px 6px;
+
   &:hover {
     border: 1px solid #f3a683;
     box-shadow: rgba(241, 144, 102, 0.16) 0px 10px 36px 0px,
       rgba(241, 144, 102, 0.06) 0px 0px 0px 1px;
   }
+
   ${({ theme }) => theme.big`
     width:40%;
   `};
+
   ${({ theme }) => theme.tablet`
     width:100%;
   `};

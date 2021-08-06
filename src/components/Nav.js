@@ -46,14 +46,14 @@ const Container = styled.nav`
 `;
 
 const Wrapper = styled.div`
-  margin: 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 20px;
 
   ${({ theme }) => theme.tablet`
-      margin: 0 5px;
-    `};
+    margin: 0 5px;
+  `};
 `;
 
 const Menu = styled.div`
@@ -64,12 +64,13 @@ const Menu = styled.div`
   background-color: ${({ isActive }) =>
     isActive ? "rgba(241, 144, 102, 1)" : "transparent"};
   border-radius: 30px;
+
   &:hover {
     color: ${({ isActive }) => (isActive ? "white" : "rgba(243, 166, 131, 1)")};
   }
 
   ${({ theme }) => theme.tablet`
-      font-size: 15px;
-      padding: 10px;
-    `};
+    padding: 10px;
+    font-size: 15px;
+  `};
 `;

@@ -16,6 +16,7 @@ export default function Card({
         <Img src={img} />
       </ImgSection>
       <Section>
+        {/* eslint-disable-next-line react/jsx-no-target-blank */}
         <a
           href={`https://maplestory.nexon.com/Promotion/2021/20210805/AwardsPoll/Out/${categoryId}/${id}/asdf`}
           target="_blank"

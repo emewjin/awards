@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import styled from "styled-components/macro";
 
 export default function Card({
-  data: { title, img, author, category, id },
+  data: { title, img, author, category, id, categoryId },
   saveItem,
   deleteItem,
 }) {
@@ -16,7 +16,12 @@ export default function Card({
         <Img src={img} />
       </ImgSection>
       <Section>
-        <Title>작품명 : {title}</Title>
+        <a
+          href={`https://maplestory.nexon.com/Promotion/2021/20210805/AwardsPoll/Out/${categoryId}/${id}/asdf`}
+          target="_blank"
+        >
+          <Title>작품명 : {title}</Title>
+        </a>
         <Author>출품자 : {author}</Author>
       </Section>
       {pathname === "/wish" ? (

@@ -76,7 +76,7 @@ const SearchInput = styled.input`
   width: 100%;
   padding: 20px 25px;
   padding-right: 50px;
-  border: 1px solid rgba(241, 144, 102, 1);
+  border: 1px solid ${({ theme }) => theme.orange};
   border-radius: 30px;
   font-size: 20px;
 
@@ -92,7 +92,7 @@ const SearchIcon = styled.i`
   top: 30%;
   right: 20px;
   font-size: 30px;
-  color: rgba(241, 144, 102, 1);
+  color: ${({ theme }) => theme.orange};
 
   ${({ theme }) => theme.tablet`
     font-size: 20px;

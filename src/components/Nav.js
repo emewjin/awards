@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export default function Nav() {
   const { pathname } = useLocation();
@@ -25,6 +25,9 @@ export default function Nav() {
         <Link to="/search">
           <Menu isActive={pathname === "/search"}>검색</Menu>
         </Link>
+        <Link to="/wish">
+          <Menu isActive={pathname === "/wish"}>찜</Menu>
+        </Link>
         <Link to="/info">
           <Menu isActive={pathname === "/info"}>정보</Menu>
         </Link>
@@ -39,7 +42,7 @@ const Container = styled.nav`
   top: 0;
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 20px 0;
   width: 100%;
   background-color: white;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -57,19 +60,21 @@ const Wrapper = styled.div`
 `;
 
 const Menu = styled.div`
+  margin: 0 10px;
   padding: 10px 15px;
   font-size: 20px;
   font-weight: bold;
-  color: ${({ isActive }) => (isActive ? "white" : "rgba(241, 144, 102, 1)")};
-  background-color: ${({ isActive }) =>
-    isActive ? "rgba(241, 144, 102, 1)" : "transparent"};
+  color: ${({ isActive, theme }) => (isActive ? "white" : theme.orange)};
+  background-color: ${({ isActive, theme }) =>
+    isActive ? theme.orange : "transparent"};
   border-radius: 30px;
 
   &:hover {
-    color: ${({ isActive }) => (isActive ? "white" : "rgba(243, 166, 131, 1)")};
+    color: ${({ isActive, theme }) => (isActive ? "white" : theme.lightOrange)};
   }
 
   ${({ theme }) => theme.tablet`
+    margin: 0;
     padding: 10px;
     font-size: 15px;
   `};

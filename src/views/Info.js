@@ -18,6 +18,7 @@ export default function Info() {
         <List>
           ✅데이터의 모든 저작권은 넥슨 메이플스토리와 출품자에게 있습니다.
         </List>
+        <List>✅본선 때도 지원할 예정입니다!</List>
       </Lists>
     </Container>
   );
@@ -36,9 +37,13 @@ const Title = styled.h1`
   margin: 20px 0;
   font-size: 40px;
   font-weight: bold;
-  color: rgba(241, 144, 102, 1);
+  color: ${({ theme }) => theme.orange};
   text-align: center;
   word-break: keep-all;
+
+  ${({ theme }) => theme.tablet`
+    font-size: 30px;
+  `};
 `;
 
 const Lists = styled.ul`
@@ -51,6 +56,5 @@ const Lists = styled.ul`
 const List = styled.li`
   margin: 10px 0;
   font-size: 20px;
-  color: rgba(0, 0, 0, 0.7);
   text-align: center;
 `;

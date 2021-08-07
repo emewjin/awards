@@ -46,6 +46,10 @@ const Container = styled.nav`
   width: 100%;
   background-color: white;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  ${({ theme }) => theme.tablet`
+    justify-content: center;
+  `};
 `;
 
 const Wrapper = styled.div`
@@ -74,7 +78,7 @@ const Menu = styled.div`
   }
 
   ${({ theme }) => theme.tablet`
-    margin: 0;
+    margin: 0 2px;
     padding: 10px;
     font-size: 15px;
   `};

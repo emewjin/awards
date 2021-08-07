@@ -69,6 +69,7 @@ const Container = styled.main`
 `;
 
 const Up = styled.button`
+  z-index: 800;
   position: fixed;
   right: 20px;
   bottom: 20px;

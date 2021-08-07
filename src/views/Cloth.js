@@ -1,19 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import Section from "../components/Section";
-import shuffleRandomly from "../utils";
+import useShuffledData from "../hooks/useShuffledData";
 import styled from "styled-components";
 
 export default function Hair() {
+  const datas = useShuffledData("cloth");
   const observerRef = useRef(null);
-  const [datas, setDatas] = useState([]);
   const [clothes, setClothes] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setInitData("cloth");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     getData();
@@ -29,12 +23,6 @@ export default function Hair() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clothes]);
-
-  const setInitData = async (category) => {
-    const { data: unshuffled } = await axios.get(`/datas/${category}.json`);
-    const shuffledDatas = shuffleRandomly(unshuffled);
-    setDatas([...shuffledDatas]);
-  };
 
   const getData = async () => {
     try {

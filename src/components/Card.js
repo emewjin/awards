@@ -20,6 +20,7 @@ export default function Card({
         <a
           href={`https://maplestory.nexon.com/Promotion/2021/20210805/AwardsPoll/Out/${categoryId}/${id}/asdf`}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <Title>작품명 : {title}</Title>
         </a>

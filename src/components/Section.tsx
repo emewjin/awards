@@ -4,7 +4,24 @@ import Card from "./Card";
 import styled from "styled-components/macro";
 
 interface IProps {
-  datas: object;
+  datas: [
+    {
+      author: string;
+      category: string;
+      categoryId: number;
+      id: number;
+      img: string;
+      title: string;
+    }
+  ];
+  data: {
+    author: string;
+    category: string;
+    categoryId: number;
+    id: number;
+    img: string;
+    title: string;
+  };
   loading: boolean;
 }
 function Section({ datas, loading }: IProps) {
@@ -22,18 +39,20 @@ function Section({ datas, loading }: IProps) {
     localStorage.setItem("id", JSON.stringify(wishIds));
   }, [wishIds]);
 
-  const saveItem = (e) => {
-    const id = e.target.dataset.id;
+  const saveItem = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLElement;
+    const id = target.getAttribute("data-id");
     if (!wishIds.includes(id)) {
-      setWishIds((prev) => [...prev, id]);
+      setWishIds((prev: string[]) => [...prev, id]);
       alert("찜 성공!");
     }
     if (wishIds.includes(id)) alert("이미 찜한 항목이예요");
   };
 
-  const deleteItem = (e) => {
-    const id = e.target.dataset.id;
-    const clearedItems = wishIds.filter((wish) => wish !== id);
+  const deleteItem = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLElement;
+    const id = target.getAttribute("data-id");
+    const clearedItems = wishIds.filter((wish: string) => wish !== id);
     setWishIds([...clearedItems]);
   };
 
@@ -47,7 +66,7 @@ function Section({ datas, loading }: IProps) {
   return (
     <Container>
       {loading && <p>데이터를 불러오고 있습니다</p>}
-      {datas?.map((data: object) => (
+      {datas?.map((data) => (
         <Card
           data={data}
           key={data.id}

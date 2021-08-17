@@ -2,11 +2,24 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components/macro";
 
-export default function Card({
+interface IProps {
+  data: {
+    author: string;
+    category: string;
+    categoryId: number;
+    id: number;
+    img: string;
+    title: string;
+  };
+  saveItem: React.MouseEventHandler;
+  deleteItem: React.MouseEventHandler;
+}
+
+function Card({
   data: { title, img, author, category, id, categoryId },
   saveItem,
   deleteItem,
-}) {
+}: IProps) {
   const { pathname } = useLocation();
 
   return (
@@ -38,6 +51,8 @@ export default function Card({
     </Container>
   );
 }
+
+export default Card;
 
 const Container = styled.div`
   position: relative;

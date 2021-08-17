@@ -48,3 +48,24 @@ const id = target.getAttribute("data-id");
 ### 리액트 + 타입스크립트 팁
 
 [10++ TypeScript Pro tips/patterns with (or without) React](https://medium.com/@martin_hotell/10-typescript-pro-tips-patterns-with-or-without-react-5799488d6680#78b9)
+
+### 스타일드 컴포넌트 props 타입 적용하기
+
+```tsx
+// 인터페이스
+interface INav {
+  isActive: boolean;
+}
+
+// 컴포넌트 상황
+<Link to="/info">
+  //isActive에서 에러가 뜨는상황 (에러 ts2769)
+  <Menu isActive={pathname === "/info"}>정보</Menu>
+</Link>
+
+// 스타일드 컴포넌트
+const Menu = styled.div<INav>` // <인터페이스>를 태그 옆에 작성
+```
+
+문제 : 스타일드 컴포넌트에 넘겨지는 props도 타입 지정이 필요
+해결 : 위와 같음

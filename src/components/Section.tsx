@@ -24,6 +24,7 @@ interface IProps {
   };
   loading: boolean;
 }
+
 function Section({ datas, loading }: IProps) {
   const { wishIds, setWishIds } = useWishIdContext();
 

@@ -3,11 +3,23 @@ import { useWishIdContext } from "../App";
 import Card from "./Card";
 import styled from "styled-components/macro";
 
-export default function Section({ datas, loading }) {
+interface IProps {
+  datas: {
+    author: string;
+    category: string;
+    categoryId: number;
+    id: number;
+    img: string;
+    title: string;
+  }[];
+  loading?: boolean;
+}
+
+function Section({ datas, loading }: IProps) {
   const { wishIds, setWishIds } = useWishIdContext();
 
   useEffect(() => {
-    const localWishes = JSON.parse(localStorage.getItem("id"));
+    const localWishes = JSON.parse(localStorage.getItem("id") || "{}");
     if (!localWishes) return;
     if (localWishes.length) setWishIds([...localWishes]);
     if (!localWishes.length) setWishIds([]);
@@ -18,18 +30,20 @@ export default function Section({ datas, loading }) {
     localStorage.setItem("id", JSON.stringify(wishIds));
   }, [wishIds]);
 
-  const saveItem = (e) => {
-    const id = e.target.dataset.id;
+  const saveItem = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLElement;
+    const id = target.getAttribute("data-id");
     if (!wishIds.includes(id)) {
-      setWishIds((prev) => [...prev, id]);
+      setWishIds((prev: string[]) => [...prev, id]);
       alert("찜 성공!");
     }
     if (wishIds.includes(id)) alert("이미 찜한 항목이예요");
   };
 
-  const deleteItem = (e) => {
-    const id = e.target.dataset.id;
-    const clearedItems = wishIds.filter((wish) => wish !== id);
+  const deleteItem = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLElement;
+    const id = target.getAttribute("data-id");
+    const clearedItems = wishIds.filter((wish: string) => wish !== id);
     setWishIds([...clearedItems]);
   };
 
@@ -57,6 +71,8 @@ export default function Section({ datas, loading }) {
     </Container>
   );
 }
+
+export default Section;
 
 const Container = styled.main`
   display: flex;

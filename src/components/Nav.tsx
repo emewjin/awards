@@ -2,7 +2,11 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components/macro";
 
-export default function Nav() {
+interface INav {
+  isActive: boolean;
+}
+
+function Nav() {
   const { pathname } = useLocation();
 
   return (
@@ -36,6 +40,8 @@ export default function Nav() {
   );
 }
 
+export default Nav;
+
 const Container = styled.nav`
   z-index: 999;
   position: fixed;
@@ -48,7 +54,6 @@ const Container = styled.nav`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   ${({ theme }) => theme.tablet`
-    justify-content: center;
   `};
 `;
 
@@ -63,7 +68,7 @@ const Wrapper = styled.div`
   `};
 `;
 
-const Menu = styled.div`
+const Menu = styled.div<INav>`
   margin: 0 10px;
   padding: 10px 15px;
   font-size: 20px;

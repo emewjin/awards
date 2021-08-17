@@ -4,11 +4,20 @@ import { useWishIdContext } from "../App";
 import Section from "../components/Section";
 import styled from "styled-components";
 
+type Data = {
+  author: string;
+  category: string;
+  categoryId: number;
+  id: number;
+  img: string;
+  title: string;
+};
+
 export default function Wish() {
   const { wishIds, setWishIds } = useWishIdContext();
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState<Data[]>([]);
   const [loading, setLoading] = useState(true);
-  const [wishItems, setWishItems] = useState([]);
+  const [wishItems, setWishItems] = useState<Data[]>([]);
 
   const getData = async () => {
     try {
@@ -40,10 +49,6 @@ export default function Wish() {
     setWishIds([]);
   };
 
-  const wishSetWishIds = (newData) => {
-    setWishIds([...newData]);
-  };
-
   return (
     <Container>
       <Title>찜 리스트</Title>
@@ -55,11 +60,7 @@ export default function Wish() {
       {!loading && wishItems.length === 0 ? (
         <Notice>찜한 작품이 없어요</Notice>
       ) : (
-        <Section
-          datas={wishItems}
-          wishIds={wishIds}
-          wishSetWishIds={wishSetWishIds}
-        />
+        <Section datas={wishItems} />
       )}
     </Container>
   );

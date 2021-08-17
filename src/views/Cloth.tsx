@@ -4,7 +4,7 @@ import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import Section from "../components/Section";
 import styled from "styled-components";
 
-export default function Hair() {
+function Cloth() {
   const datas = useShuffledData("cloth");
   const { items: clothes, loading, observerRef } = useInfiniteScroll(datas);
 
@@ -15,6 +15,9 @@ export default function Hair() {
     </>
   );
 }
+
+export default Cloth;
+
 const Observer = styled.div`
   height: 50px;
 `;

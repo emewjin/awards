@@ -11,8 +11,8 @@ interface IProps {
     img: string;
     title: string;
   };
-  saveItem: React.MouseEventHandler;
-  deleteItem: React.MouseEventHandler;
+  saveItem: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  deleteItem: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 function Card({

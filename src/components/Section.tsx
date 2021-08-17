@@ -4,25 +4,15 @@ import Card from "./Card";
 import styled from "styled-components/macro";
 
 interface IProps {
-  datas: [
-    {
-      author: string;
-      category: string;
-      categoryId: number;
-      id: number;
-      img: string;
-      title: string;
-    }
-  ];
-  data: {
+  datas: {
     author: string;
     category: string;
     categoryId: number;
     id: number;
     img: string;
     title: string;
-  };
-  loading: boolean;
+  }[];
+  loading?: boolean;
 }
 
 function Section({ datas, loading }: IProps) {

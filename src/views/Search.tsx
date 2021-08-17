@@ -3,10 +3,19 @@ import axios from "axios";
 import Section from "../components/Section";
 import styled from "styled-components/macro";
 
+type Data = {
+  author: string;
+  category: string;
+  categoryId: number;
+  id: number;
+  img: string;
+  title: string;
+};
+
 export default function Search() {
-  const [datas, setDatas] = useState([]);
+  const [datas, setDatas] = useState<Data[]>([]);
   const [isBlured, setIsBlured] = useState(false);
-  const [searchedData, setSearchedData] = useState([]);
+  const [searchedData, setSearchedData] = useState<Data[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   const getData = async () => {
@@ -21,8 +30,8 @@ export default function Search() {
     getData();
   }, []);
 
-  const handleInput = (e) => {
-    const { value } = e.target;
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    const { value } = e.currentTarget;
     setSearchTerm(value);
   };
 
@@ -34,9 +43,8 @@ export default function Search() {
     });
     setSearchedData([...result]);
   };
-
-  const onEnter = (e) => {
-    if (e.keyCode === 13) searchItem();
+  const onEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === "Enter") searchItem();
   };
 
   const onBlurInput = () => {

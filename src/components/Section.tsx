@@ -3,11 +3,15 @@ import { useWishIdContext } from "../App";
 import Card from "./Card";
 import styled from "styled-components/macro";
 
-export default function Section({ datas, loading }) {
+interface IProps {
+  datas: object;
+  loading: boolean;
+}
+function Section({ datas, loading }: IProps) {
   const { wishIds, setWishIds } = useWishIdContext();
 
   useEffect(() => {
-    const localWishes = JSON.parse(localStorage.getItem("id"));
+    const localWishes = JSON.parse(localStorage.getItem("id") || "{}");
     if (!localWishes) return;
     if (localWishes.length) setWishIds([...localWishes]);
     if (!localWishes.length) setWishIds([]);
@@ -43,7 +47,7 @@ export default function Section({ datas, loading }) {
   return (
     <Container>
       {loading && <p>데이터를 불러오고 있습니다</p>}
-      {datas?.map((data) => (
+      {datas?.map((data: object) => (
         <Card
           data={data}
           key={data.id}
@@ -57,6 +61,8 @@ export default function Section({ datas, loading }) {
     </Container>
   );
 }
+
+export default Section;
 
 const Container = styled.main`
   display: flex;

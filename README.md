@@ -12,3 +12,27 @@
 - 찜 기능을 지원합니다. db와 서버가 없는 상황에서 영구 저장을 위해 로컬스토리지를 이용하기 때문에 서로 다른 기기와 브라우저에서는 찜 목록이 연동되지 않습니다.
 - 작품명을 클릭하면 공식 홈페이지의 해당 작품 상세 페이지로 이동됩니다.
 - 작품명과 출품자 이름을 검색할 수 있습니다.
+
+## 타입스크립트 마이그레이션 에러
+
+```
+const localWishes = JSON.parse(localStorage.getItem("id"));
+
+Argument of type 'string | null' is not assignable to parameter of type 'string'. Type 'null' is not assignable to type 'string'.
+```
+
+Section.tsx, 14줄
+에러 원인 : getItem이 string 또는 null을 리턴하고 있는데 실제 JSON.parse()에 쓰이는 것은 null이 아니라 string이기 때문에 확실히 하라고 에러가 뜸.
+해결 :
+
+```js
+//#1
+const localWishes = JSON.parse(localStorage.getItem("id") || "{}");
+
+//#2
+const localWishes = localStorage.getItem("id";
+const parsedLocalWishes =
+  localWishes === null ? false : JSON.parse(localWishes);
+```
+
+https://stackoverflow.com/questions/46915002/argument-of-type-string-null-is-not-assignable-to-parameter-of-type-string

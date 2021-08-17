@@ -247,3 +247,39 @@ const [datas, setDatas] = useState<Data[]>([]);
 https://stackoverflow.com/questions/44321326/property-value-does-not-exist-on-type-eventtarget-in-typescript
 
 event.target here is an HTMLElement which is the parent of all HTML elements, but isn't guaranteed to have the property value. TypeScript detects this and throws the error. Cast event.target to the appropriate HTML element to ensure it is HTMLInputElement which does have a value property:
+
+https://stackoverflow.com/questions/49152226/property-value-does-not-exist-on-eventtarget-in-typescript
+
+currentTarget은 해결됨
+
+### useRef 타입
+
+어떤 타입을 써야하지? 헷갈리면 원하는 요소 위에 커서를 올려봐라
+
+### createContext는 defaultParameter를 필요로 한다
+
+https://stackoverflow.com/questions/61333188/react-typescript-avoid-context-default-value
+
+```js
+Expected 1 arguments, but got 0.ts(2554)
+
+index.d.ts(383, 9): An argument for 'defaultValue' was not provided.
+
+(alias) createContext<unknown>(defaultValue: unknown): React.Context<unknown>
+import createContext
+```
+
+https://stackoverflow.com/questions/63193891/createcontext-doesnt-accept-defaultvalue
+
+https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts#L382
+
+수정후
+
+```js
+const WishIdContext = createContext([[], () => null]);
+```
+
+### 리액트 타입스크립트 세팅
+
+index.js를 index.tsx로 바꿨으면 리액트 앱 엔트리 포인트도 변경해주어야 한다. package.json에서 다음을 추가한다.
+` "main": "src/index.tsx",`
